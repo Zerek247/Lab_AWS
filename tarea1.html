@@ -7808,61 +7808,84 @@ a.anchor-link {
 <span class="n">HTML</span><span class="p">(</span><span class="s2">"""</span>
 <span class="s2">&lt;style&gt;</span>
 
-<span class="s2">/* Tipografía general */</span>
-<span class="s2">body {</span>
-<span class="s2">    font-family: 'Segoe UI', Arial, sans-serif;</span>
-<span class="s2">    line-height: 1.6;</span>
+<span class="s2">/* ocultar la primera celda */</span>
+<span class="s2">.jp-CodeCell:first-child {</span>
+<span class="s2">    display:none;</span>
 <span class="s2">}</span>
 
-<span class="s2">/* Títulos */</span>
+<span class="s2">/* tipografía general */</span>
+<span class="s2">body {</span>
+<span class="s2">    font-family: 'Segoe UI', Arial, sans-serif;</span>
+<span class="s2">    line-height: 1.7;</span>
+<span class="s2">    background:#fafafc;</span>
+<span class="s2">}</span>
+
+<span class="s2">/* títulos */</span>
 <span class="s2">h1 {</span>
-<span class="s2">    color:#6C63FF;</span>
-<span class="s2">    border-bottom:3px solid #6C63FF;</span>
+<span class="s2">    color:#6B8EEC;</span>
+<span class="s2">    border-bottom:3px solid #BFD3FF;</span>
 <span class="s2">    padding-bottom:6px;</span>
 <span class="s2">}</span>
 
 <span class="s2">h2 {</span>
-<span class="s2">    color:#444;</span>
+<span class="s2">    color:#5A5A7A;</span>
 <span class="s2">    margin-top:30px;</span>
 <span class="s2">}</span>
 
-<span class="s2">/* Párrafos */</span>
+<span class="s2">/* párrafos */</span>
 <span class="s2">p {</span>
 <span class="s2">    font-size:16px;</span>
+<span class="s2">    color:#444;</span>
 <span class="s2">}</span>
 
-<span class="s2">/* Tablas de pandas */</span>
-<span class="s2">table {</span>
-<span class="s2">    border-collapse: collapse;</span>
+<span class="s2">/* bloques de código */</span>
+<span class="s2">.jp-CodeCell pre {</span>
+<span class="s2">    background:#f4f6ff !important;</span>
+<span class="s2">    color:#333 !important;</span>
+<span class="s2">    border-left:4px solid #9FB8FF;</span>
+<span class="s2">    padding:12px;</span>
+<span class="s2">    border-radius:6px;</span>
+<span class="s2">}</span>
+
+<span class="s2">/* resultados */</span>
+<span class="s2">.jp-OutputArea pre {</span>
+<span class="s2">    background:#fdf6ff;</span>
+<span class="s2">    border-left:4px solid #D7B8FF;</span>
+<span class="s2">    padding:10px;</span>
+<span class="s2">    border-radius:6px;</span>
+<span class="s2">}</span>
+
+<span class="s2">/* tablas de pandas */</span>
+<span class="s2">.dataframe {</span>
+<span class="s2">    border-collapse: collapse !important;</span>
 <span class="s2">    margin-top:15px;</span>
+<span class="s2">    background:white;</span>
 <span class="s2">    border-radius:8px;</span>
 <span class="s2">    overflow:hidden;</span>
 <span class="s2">}</span>
 
-<span class="s2">th {</span>
-<span class="s2">    background:#6C63FF;</span>
-<span class="s2">    color:white;</span>
-<span class="s2">    padding:10px;</span>
-<span class="s2">}</span>
-
-<span class="s2">td {</span>
+<span class="s2">.dataframe th {</span>
+<span class="s2">    background:#C9D8FF !important;</span>
+<span class="s2">    color:#333 !important;</span>
 <span class="s2">    padding:8px;</span>
 <span class="s2">}</span>
 
-<span class="s2">/* Código */</span>
-<span class="s2">pre {</span>
-<span class="s2">    background:#1e1e1e;</span>
-<span class="s2">    color:#00ff9c;</span>
-<span class="s2">    padding:12px;</span>
-<span class="s2">    border-radius:8px;</span>
+<span class="s2">.dataframe td {</span>
+<span class="s2">    padding:8px;</span>
+<span class="s2">    border-bottom:1px solid #eee;</span>
 <span class="s2">}</span>
 
-<span class="s2">/* Bloques informativos */</span>
+<span class="s2">/* cajas informativas */</span>
 <span class="s2">.note {</span>
-<span class="s2">    background:#eef2ff;</span>
+<span class="s2">    background:#EEF3FF;</span>
 <span class="s2">    padding:15px;</span>
 <span class="s2">    border-radius:8px;</span>
-<span class="s2">    border-left:6px solid #6C63FF;</span>
+<span class="s2">    border-left:6px solid #9FB8FF;</span>
+<span class="s2">}</span>
+
+<span class="s2">/* listas */</span>
+<span class="s2">ul {</span>
+<span class="s2">    line-height:1.8;</span>
 <span class="s2">}</span>
 
 <span class="s2">&lt;/style&gt;</span>
@@ -7881,61 +7904,84 @@ a.anchor-link {
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
 
-/* Tipografía general */
-body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    line-height: 1.6;
+/* ocultar la primera celda */
+.jp-CodeCell:first-child {
+    display:none;
 }
 
-/* Títulos */
+/* tipografía general */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    line-height: 1.7;
+    background:#fafafc;
+}
+
+/* títulos */
 h1 {
-    color:#6C63FF;
-    border-bottom:3px solid #6C63FF;
+    color:#6B8EEC;
+    border-bottom:3px solid #BFD3FF;
     padding-bottom:6px;
 }
 
 h2 {
-    color:#444;
+    color:#5A5A7A;
     margin-top:30px;
 }
 
-/* Párrafos */
+/* párrafos */
 p {
     font-size:16px;
+    color:#444;
 }
 
-/* Tablas de pandas */
-table {
-    border-collapse: collapse;
+/* bloques de código */
+.jp-CodeCell pre {
+    background:#f4f6ff !important;
+    color:#333 !important;
+    border-left:4px solid #9FB8FF;
+    padding:12px;
+    border-radius:6px;
+}
+
+/* resultados */
+.jp-OutputArea pre {
+    background:#fdf6ff;
+    border-left:4px solid #D7B8FF;
+    padding:10px;
+    border-radius:6px;
+}
+
+/* tablas de pandas */
+.dataframe {
+    border-collapse: collapse !important;
     margin-top:15px;
+    background:white;
     border-radius:8px;
     overflow:hidden;
 }
 
-th {
-    background:#6C63FF;
-    color:white;
-    padding:10px;
-}
-
-td {
+.dataframe th {
+    background:#C9D8FF !important;
+    color:#333 !important;
     padding:8px;
 }
 
-/* Código */
-pre {
-    background:#1e1e1e;
-    color:#00ff9c;
-    padding:12px;
-    border-radius:8px;
+.dataframe td {
+    padding:8px;
+    border-bottom:1px solid #eee;
 }
 
-/* Bloques informativos */
+/* cajas informativas */
 .note {
-    background:#eef2ff;
+    background:#EEF3FF;
     padding:15px;
     border-radius:8px;
-    border-left:6px solid #6C63FF;
+    border-left:6px solid #9FB8FF;
+}
+
+/* listas */
+ul {
+    line-height:1.8;
 }
 
 </style>
@@ -8298,9 +8344,10 @@ Ventas altas:
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
 <pre>['tarea1.ipynb',
+ 'dataset1.ipynb',
  'utilidades.py',
+ 'titanic.csv',
  '.ipynb_checkpoints',
- 'Untitled.ipynb',
  'python_desde_cero_con_IDEA_v2_0.ipynb',
  'actividad1.ipynb',
  '__pycache__',
