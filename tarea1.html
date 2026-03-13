@@ -7807,21 +7807,64 @@ a.anchor-link {
 
 <span class="n">HTML</span><span class="p">(</span><span class="s2">"""</span>
 <span class="s2">&lt;style&gt;</span>
+
+<span class="s2">/* Tipografía general */</span>
 <span class="s2">body {</span>
-<span class="s2">    font-family: Arial;</span>
+<span class="s2">    font-family: 'Segoe UI', Arial, sans-serif;</span>
+<span class="s2">    line-height: 1.6;</span>
 <span class="s2">}</span>
 
+<span class="s2">/* Títulos */</span>
 <span class="s2">h1 {</span>
 <span class="s2">    color:#6C63FF;</span>
+<span class="s2">    border-bottom:3px solid #6C63FF;</span>
+<span class="s2">    padding-bottom:6px;</span>
 <span class="s2">}</span>
 
 <span class="s2">h2 {</span>
-<span class="s2">    color:#333;</span>
+<span class="s2">    color:#444;</span>
+<span class="s2">    margin-top:30px;</span>
 <span class="s2">}</span>
 
+<span class="s2">/* Párrafos */</span>
+<span class="s2">p {</span>
+<span class="s2">    font-size:16px;</span>
+<span class="s2">}</span>
+
+<span class="s2">/* Tablas de pandas */</span>
 <span class="s2">table {</span>
+<span class="s2">    border-collapse: collapse;</span>
+<span class="s2">    margin-top:15px;</span>
+<span class="s2">    border-radius:8px;</span>
+<span class="s2">    overflow:hidden;</span>
+<span class="s2">}</span>
+
+<span class="s2">th {</span>
+<span class="s2">    background:#6C63FF;</span>
+<span class="s2">    color:white;</span>
+<span class="s2">    padding:10px;</span>
+<span class="s2">}</span>
+
+<span class="s2">td {</span>
+<span class="s2">    padding:8px;</span>
+<span class="s2">}</span>
+
+<span class="s2">/* Código */</span>
+<span class="s2">pre {</span>
+<span class="s2">    background:#1e1e1e;</span>
+<span class="s2">    color:#00ff9c;</span>
+<span class="s2">    padding:12px;</span>
 <span class="s2">    border-radius:8px;</span>
 <span class="s2">}</span>
+
+<span class="s2">/* Bloques informativos */</span>
+<span class="s2">.note {</span>
+<span class="s2">    background:#eef2ff;</span>
+<span class="s2">    padding:15px;</span>
+<span class="s2">    border-radius:8px;</span>
+<span class="s2">    border-left:6px solid #6C63FF;</span>
+<span class="s2">}</span>
+
 <span class="s2">&lt;/style&gt;</span>
 <span class="s2">"""</span><span class="p">)</span>
 </pre></div>
@@ -7837,21 +7880,64 @@ a.anchor-link {
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[1]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
+
+/* Tipografía general */
 body {
-    font-family: Arial;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    line-height: 1.6;
 }
 
+/* Títulos */
 h1 {
     color:#6C63FF;
+    border-bottom:3px solid #6C63FF;
+    padding-bottom:6px;
 }
 
 h2 {
-    color:#333;
+    color:#444;
+    margin-top:30px;
 }
 
+/* Párrafos */
+p {
+    font-size:16px;
+}
+
+/* Tablas de pandas */
 table {
+    border-collapse: collapse;
+    margin-top:15px;
+    border-radius:8px;
+    overflow:hidden;
+}
+
+th {
+    background:#6C63FF;
+    color:white;
+    padding:10px;
+}
+
+td {
+    padding:8px;
+}
+
+/* Código */
+pre {
+    background:#1e1e1e;
+    color:#00ff9c;
+    padding:12px;
     border-radius:8px;
 }
+
+/* Bloques informativos */
+.note {
+    background:#eef2ff;
+    padding:15px;
+    border-radius:8px;
+    border-left:6px solid #6C63FF;
+}
+
 </style>
 </div>
 </div>
@@ -8214,6 +8300,7 @@ Ventas altas:
 <pre>['tarea1.ipynb',
  'utilidades.py',
  '.ipynb_checkpoints',
+ 'Untitled.ipynb',
  'python_desde_cero_con_IDEA_v2_0.ipynb',
  'actividad1.ipynb',
  '__pycache__',
