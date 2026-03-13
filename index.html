@@ -1,271 +1,373 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Portafolio | Arturo Ramirez Tejeda</title>
 
-<!-- Bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 
 body{
-    background:#0a0a0a;
-    color:white;
-    font-family:'Poppins',sans-serif;
+margin:0;
+font-family:'Inter',sans-serif;
+color:white;
+background:radial-gradient(circle at top,#1a0033 0%,#050505 45%,#000000 100%);
 }
+
+/* NAVBAR */
 
 .navbar{
-    background:#0f0f0f;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(12px);
 }
 
+/* HERO */
+
 .hero{
-    height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    background: radial-gradient(circle at top,#2a0050,#000000);
+height:55vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
 }
 
 .hero h1{
-    font-size:4rem;
-    font-weight:700;
-    color:#bb86fc;
+font-family:'Orbitron',sans-serif;
+font-size:4rem;
+background:linear-gradient(90deg,#ffffff,#c77dff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-.hero p{
-    font-size:1.3rem;
-    color:#ccc;
+/* TERMINAL */
+
+.code-section{
+padding:10px 0 30px 0;
+display:flex;
+justify-content:center;
 }
+
+.code-box{
+width:100%;
+max-width:850px;
+background:#050505;
+border-radius:10px;
+padding:25px;
+font-family:monospace;
+color:#c77dff;
+box-shadow:0 0 40px rgba(124,44,255,0.15);
+}
+
+.cursor{
+display:inline-block;
+width:8px;
+background:#c77dff;
+margin-left:4px;
+animation:blink 1s infinite;
+}
+
+@keyframes blink{
+0%{opacity:1}
+50%{opacity:0}
+100%{opacity:1}
+}
+
+/* SECTIONS */
 
 .section{
-    padding:80px 0;
+padding:70px 0;
 }
 
 .section-title{
-    color:#bb86fc;
-    margin-bottom:40px;
-    text-align:center;
-    font-weight:700;
+text-align:center;
+margin-bottom:60px;
 }
 
-.card{
-    background:#111;
-    border:1px solid #2b2b2b;
-    transition:0.3s;
+/* TECH GRID */
+
+.tech-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+gap:35px;
+text-align:center;
 }
 
-.card:hover{
-    transform:translateY(-8px);
-    border-color:#bb86fc;
-    box-shadow:0 0 20px #7b2cbf;
+.tech-item{
+padding:30px;
+border-radius:14px;
+background:rgba(255,255,255,0.03);
+transition:.35s;
+}
+
+.tech-item:hover{
+transform:translateY(-8px);
+background:rgba(199,125,255,0.08);
+box-shadow:0 10px 40px rgba(124,44,255,0.2);
+}
+
+.tech-item i{
+font-size:55px;
+margin-bottom:12px;
+}
+
+/* GALERIA */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+}
+
+.card-portfolio{
+height:190px;
+border-radius:14px;
+background:linear-gradient(145deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01));
+display:flex;
+align-items:center;
+justify-content:center;
+color:#aaa;
+transition:.35s;
+}
+
+.card-portfolio:hover{
+transform:translateY(-8px);
+background:rgba(199,125,255,0.12);
+box-shadow:0 10px 35px rgba(124,44,255,0.25);
 }
 
 footer{
-    background:#050505;
-    padding:20px;
-    text-align:center;
-    color:#777;
-}
-
-.btn-custom{
-    background:#7b2cbf;
-    border:none;
-}
-
-.btn-custom:hover{
-    background:#9d4edd;
+padding:40px;
+text-align:center;
+color:#888;
 }
 
 </style>
 
 </head>
+
 <body>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+<nav class="navbar navbar-expand-lg fixed-top">
+
 <div class="container">
 
-<a class="navbar-brand" href="#">Portafolio</a>
+<a class="navbar-brand text-white">Portafolio</a>
 
-<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
-<span class="navbar-toggler-icon"></span>
-</button>
+<div class="navbar-nav ms-auto">
 
-<div class="collapse navbar-collapse" id="menu">
-<ul class="navbar-nav ms-auto">
+<a class="nav-link text-light" href="#inicio">Inicio</a>
+<a class="nav-link text-light" href="#tecnologias">Tecnologías</a>
+<a class="nav-link text-light" href="#tareas">Tareas</a>
+<a class="nav-link text-light" href="#ejercicios">Ejercicios</a>
+<a class="nav-link text-light" href="#proyecto">Proyecto</a>
 
-<li class="nav-item"><a class="nav-link" href="#descripcion">Descripción</a></li>
-<li class="nav-item"><a class="nav-link" href="#tareas">Tareas</a></li>
-<li class="nav-item"><a class="nav-link" href="#ejercicios">Ejercicios</a></li>
-<li class="nav-item"><a class="nav-link" href="#proyecto">Proyecto Final</a></li>
-
-</ul>
 </div>
 
 </div>
+
 </nav>
 
+<section class="hero container" id="inicio">
 
-<!-- HERO -->
-<section class="hero">
-
-<div class="container">
+<div>
 
 <h1>Arturo Ramirez Tejeda</h1>
 
-<p>Desarrollador en formación | Portafolio de proyectos, tareas y ejercicios realizados durante el curso.</p>
-
-<a href="#descripcion" class="btn btn-custom mt-3">Ver Portafolio</a>
-
-</div>
-
-</section>
-
-
-<!-- DESCRIPCION -->
-<section id="descripcion" class="section">
-
-<div class="container">
-
-<h2 class="section-title">Descripción</h2>
-
-<p class="text-center">
-Este portafolio reúne los trabajos, tareas y proyectos desarrollados durante el curso.
-Aquí se muestran los avances en programación, desarrollo web y práctica de diferentes tecnologías.
+<p class="mt-3 text-secondary">
+Portafolio de desarrollo y proyectos académicos
 </p>
 
 </div>
 
 </section>
 
+<!-- TERMINAL INTRO -->
+
+<section class="code-section container">
+
+<div class="code-box">
+<pre class="terminal" data-text="> initializing portfolio...\n> loading technologies..."></pre>
+</div>
+
+</section>
+
+<!-- TECNOLOGIAS -->
+
+<section class="section container" id="tecnologias">
+
+<h2 class="section-title">Tecnologías</h2>
+
+<div class="tech-grid">
+
+<div class="tech-item">
+<i class="devicon-java-plain colored"></i>
+<p>Java</p>
+</div>
+
+<div class="tech-item">
+<i class="devicon-python-plain colored"></i>
+<p>Python</p>
+</div>
+
+<div class="tech-item">
+<i class="devicon-cplusplus-plain colored"></i>
+<p>C++</p>
+</div>
+
+<div class="tech-item">
+<i class="devicon-csharp-plain colored"></i>
+<p>C#</p>
+</div>
+
+<div class="tech-item">
+<i class="devicon-mysql-plain colored"></i>
+<p>MySQL</p>
+</div>
+
+<div class="tech-item">
+<i class="devicon-react-original colored"></i>
+<p>React</p>
+</div>
+
+</div>
+
+</section>
 
 <!-- TAREAS -->
-<section id="tareas" class="section">
 
-<div class="container">
+<section class="section container" id="tareas">
+
+<div class="code-section">
+<div class="code-box">
+<pre class="terminal" data-text="> loading tasks..."></pre>
+</div>
+</div>
 
 <h2 class="section-title">Tareas</h2>
 
-<div class="row g-4">
+<div class="gallery">
 
-<div class="col-md-4">
-<div class="card p-4">
-<h4>Tarea 1</h4>
-<p>Descripción breve de la tarea realizada.</p>
-<button class="btn btn-custom">Ver</button>
-</div>
-</div>
-
-<div class="col-md-4">
-<div class="card p-4">
-<h4>Tarea 2</h4>
-<p>Descripción breve de la tarea realizada.</p>
-<button class="btn btn-custom">Ver</button>
-</div>
-</div>
-
-<div class="col-md-4">
-<div class="card p-4">
-<h4>Tarea 3</h4>
-<p>Descripción breve de la tarea realizada.</p>
-<button class="btn btn-custom">Ver</button>
-</div>
-</div>
-
-</div>
+<div class="card-portfolio">Agregar tarea</div>
+<div class="card-portfolio">Agregar tarea</div>
+<div class="card-portfolio">Agregar tarea</div>
 
 </div>
 
 </section>
 
-
 <!-- EJERCICIOS -->
-<section id="ejercicios" class="section">
 
-<div class="container">
+<section class="section container" id="ejercicios">
+
+<div class="code-section">
+<div class="code-box">
+<pre class="terminal" data-text="> loading class exercises..."></pre>
+</div>
+</div>
 
 <h2 class="section-title">Ejercicios en Clase</h2>
 
-<div class="row g-4">
+<div class="gallery">
 
-<div class="col-md-4">
-<div class="card p-4">
-<h4>Ejercicio 1</h4>
-<p>Actividad realizada durante la clase.</p>
-<button class="btn btn-custom">Ver</button>
-</div>
-</div>
-
-<div class="col-md-4">
-<div class="card p-4">
-<h4>Ejercicio 2</h4>
-<p>Actividad realizada durante la clase.</p>
-<button class="btn btn-custom">Ver</button>
-</div>
-</div>
-
-<div class="col-md-4">
-<div class="card p-4">
-<h4>Ejercicio 3</h4>
-<p>Actividad realizada durante la clase.</p>
-<button class="btn btn-custom">Ver</button>
-</div>
-</div>
-
-</div>
+<div class="card-portfolio">Agregar ejercicio</div>
+<div class="card-portfolio">Agregar ejercicio</div>
+<div class="card-portfolio">Agregar ejercicio</div>
 
 </div>
 
 </section>
 
+<!-- PROYECTO -->
 
-<!-- PROYECTO FINAL -->
-<section id="proyecto" class="section">
+<section class="section container" id="proyecto">
 
-<div class="container">
+<div class="code-section">
+<div class="code-box">
+<pre class="terminal" data-text="> loading final project..."></pre>
+</div>
+</div>
 
 <h2 class="section-title">Proyecto Final</h2>
 
-<div class="row justify-content-center">
+<div class="gallery">
 
-<div class="col-md-6">
-
-<div class="card p-5 text-center">
-
-<h3>Proyecto Final</h3>
-
-<p>
-Aquí se presentará el proyecto final del curso, donde se integrarán todos los conocimientos aprendidos.
-</p>
-
-<button class="btn btn-custom">Ver Proyecto</button>
-
-</div>
-
-</div>
-
-</div>
+<div class="card-portfolio">Agregar proyecto</div>
 
 </div>
 
 </section>
 
-
 <footer>
 
-Portafolio - Arturo Ramirez Tejeda
+Portafolio | Arturo Ramirez Tejeda © 2026
 
 </footer>
 
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+const terminals = document.querySelectorAll(".terminal")
+
+let index = 0
+let deleting = false
+
+function animateTerminals(){
+
+terminals.forEach(el=>{
+
+const text = el.getAttribute("data-text")
+
+let visibleText = text.substring(0,index)
+
+el.innerHTML = visibleText + '<span class="cursor"></span>'
+
+})
+
+if(!deleting){
+
+index++
+
+let maxLength = Math.max(...Array.from(terminals).map(el=>el.getAttribute("data-text").length))
+
+if(index > maxLength){
+
+deleting = true
+setTimeout(animateTerminals,1200)
+return
+
+}
+
+}else{
+
+index--
+
+if(index < 0){
+
+deleting = false
+setTimeout(animateTerminals,500)
+return
+
+}
+
+}
+
+setTimeout(animateTerminals,40)
+
+}
+
+animateTerminals()
+
+</script>
 
 </body>
 </html>
