@@ -215,16 +215,15 @@ import pandas as pd
 
 st.set_page_config(
     page_title="CSV Data Cleaner",
-    page_icon="📊",
     layout="wide"
 )
 
-st.title("📊 CSV Data Cleaner")
+st.title("CSV Data Cleaner")
 st.write("Aplicación para limpiar datasets eliminando valores nulos y duplicados.")
 
 st.divider()
 
-archivo = st.file_uploader("📂 Sube tu archivo CSV", type=["csv"])
+archivo = st.file_uploader("Sube tu archivo CSV", type=["csv"])
 
 if archivo is not None:
 
