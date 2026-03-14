@@ -101,20 +101,6 @@ color:#c77dff;
 box-shadow:0 0 40px rgba(124,44,255,0.15);
 }
 
-.cursor{
-display:inline-block;
-width:8px;
-background:#c77dff;
-margin-left:4px;
-animation:blink 1s infinite;
-}
-
-@keyframes blink{
-0%{opacity:1}
-50%{opacity:0}
-100%{opacity:1}
-}
-
 /* GALERIA */
 
 .section{
@@ -138,6 +124,7 @@ margin:auto;
 height:200px;
 border-radius:14px;
 overflow:hidden;
+cursor:pointer;
 background:linear-gradient(145deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01));
 transition:.35s;
 }
@@ -151,6 +138,37 @@ object-fit:cover;
 .card-img:hover{
 transform:translateY(-8px);
 box-shadow:0 10px 35px rgba(124,44,255,0.25);
+}
+
+/* LIGHTBOX */
+
+.lightbox{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.85);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:2000;
+}
+
+.lightbox img{
+max-width:90%;
+max-height:85%;
+border-radius:10px;
+box-shadow:0 0 30px rgba(124,44,255,0.4);
+}
+
+.close-btn{
+position:absolute;
+top:25px;
+right:35px;
+font-size:35px;
+color:white;
+cursor:pointer;
 }
 
 footer{
@@ -195,31 +213,19 @@ Aplicación desarrollada con Python, Pandas y Streamlit para limpiar datasets el
 import streamlit as st
 import pandas as pd
 
-# -----------------------------
-# CONFIGURACION DE LA PAGINA
-# -----------------------------
 st.set_page_config(
     page_title="CSV Data Cleaner",
     page_icon="📊",
     layout="wide"
 )
 
-# -----------------------------
-# TITULO
-# -----------------------------
 st.title("📊 CSV Data Cleaner")
 st.write("Aplicación para limpiar datasets eliminando valores nulos y duplicados.")
 
 st.divider()
 
-# -----------------------------
-# SUBIR ARCHIVO
-# -----------------------------
 archivo = st.file_uploader("📂 Sube tu archivo CSV", type=["csv"])
 
-# -----------------------------
-# SI SE SUBE ARCHIVO
-# -----------------------------
 if archivo is not None:
 
     df_original = pd.read_csv(archivo)
@@ -281,7 +287,8 @@ else:
 <section class="code-section container">
 
 <div class="code-box">
-<pre class="terminal" data-text="> launching streamlit app...\n> processing csv data..."></pre>
+<pre>> launching streamlit app...
+> processing csv data...</pre>
 </div>
 
 </section>
@@ -314,62 +321,48 @@ else:
 
 </section>
 
+<!-- LIGHTBOX -->
+
+<div class="lightbox" id="lightbox">
+<span class="close-btn" id="closeBtn">&times;</span>
+<img id="lightbox-img">
+</div>
+
 <footer>
 Portafolio | Arturo Ramirez Tejeda © 2026
 </footer>
 
 <script>
 
-const terminals = document.querySelectorAll(".terminal")
+/* LIGHTBOX */
 
-let index = 0
-let deleting = false
+const images = document.querySelectorAll(".card-img img")
+const lightbox = document.getElementById("lightbox")
+const lightboxImg = document.getElementById("lightbox-img")
+const closeBtn = document.getElementById("closeBtn")
 
-function animateTerminals(){
+images.forEach(img => {
 
-terminals.forEach(el=>{
+img.addEventListener("click", () => {
 
-const text = el.getAttribute("data-text")
-
-let visibleText = text.substring(0,index)
-
-el.innerHTML = visibleText + '<span class="cursor"></span>'
+lightbox.style.display = "flex"
+lightboxImg.src = img.src
 
 })
 
-if(!deleting){
+})
 
-index++
-
-let maxLength = Math.max(...Array.from(terminals).map(el=>el.getAttribute("data-text").length))
-
-if(index > maxLength){
-
-deleting = true
-setTimeout(animateTerminals,1200)
-return
-
+closeBtn.onclick = () => {
+lightbox.style.display = "none"
 }
 
-}else{
+lightbox.onclick = (e) => {
 
-index--
-
-if(index < 0){
-
-deleting = false
-setTimeout(animateTerminals,500)
-return
-
+if(e.target !== lightboxImg){
+lightbox.style.display = "none"
 }
 
 }
-
-setTimeout(animateTerminals,40)
-
-}
-
-animateTerminals()
 
 </script>
 
