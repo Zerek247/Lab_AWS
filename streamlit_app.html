@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Tarea - App Streamlit</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:'Inter',sans-serif;
+color:white;
+background:radial-gradient(circle at top,#1a0033 0%,#050505 45%,#000000 100%);
+}
+
+/* BOTON VOLVER */
+
+.back-btn{
+position:fixed;
+top:20px;
+right:20px;
+background:rgba(199,125,255,0.15);
+border:1px solid rgba(199,125,255,0.4);
+color:white;
+padding:10px 18px;
+border-radius:8px;
+text-decoration:none;
+transition:.3s;
+}
+
+.back-btn:hover{
+background:rgba(199,125,255,0.35);
+box-shadow:0 0 15px rgba(124,44,255,0.6);
+}
+
+/* HERO */
+
+.hero{
+height:40vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+
+.hero h1{
+font-family:'Orbitron',sans-serif;
+font-size:3.5rem;
+background:linear-gradient(90deg,#ffffff,#c77dff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+/* TERMINAL */
+
+.code-section{
+padding:10px 0 30px 0;
+display:flex;
+justify-content:center;
+}
+
+.code-box{
+width:100%;
+max-width:850px;
+background:#050505;
+border-radius:10px;
+padding:25px;
+font-family:monospace;
+color:#c77dff;
+box-shadow:0 0 40px rgba(124,44,255,0.15);
+}
+
+.cursor{
+display:inline-block;
+width:8px;
+background:#c77dff;
+margin-left:4px;
+animation:blink 1s infinite;
+}
+
+@keyframes blink{
+0%{opacity:1}
+50%{opacity:0}
+100%{opacity:1}
+}
+
+/* GALERIA */
+
+.section{
+padding:60px 0;
+}
+
+.section-title{
+text-align:center;
+margin-bottom:50px;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+max-width:1000px;
+margin:auto;
+}
+
+.card-img{
+height:200px;
+border-radius:14px;
+overflow:hidden;
+background:linear-gradient(145deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01));
+transition:.35s;
+}
+
+.card-img img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.card-img:hover{
+transform:translateY(-8px);
+box-shadow:0 10px 35px rgba(124,44,255,0.25);
+}
+
+footer{
+padding:40px;
+text-align:center;
+color:#888;
+}
+
+  /* CODIGO STREAMLIT */
+
+.code-display{
+max-width:900px;
+margin:0 auto 40px auto;
+background:#050505;
+border-radius:10px;
+padding:18px;
+font-family:monospace;
+color:#c77dff;
+font-size:12px;
+line-height:1.4;
+box-shadow:0 0 30px rgba(124,44,255,0.15);
+overflow:auto;
+}
+
+.code-display pre{
+margin:0;
+white-space:pre-wrap;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<a class="back-btn" href="index.html">← Volver</a>
+
+<section class="hero">
+  <section class="container">
+
+<h4 style="text-align:center; margin-bottom:20px;">Código de la aplicación</h4>
+
+<div class="code-display">
+<pre>
+import streamlit as st
+import pandas as pd
+
+st.set_page_config(
+    page_title="CSV Data Cleaner",
+    page_icon="📊",
+    layout="wide"
+)
+
+st.title("📊 CSV Data Cleaner")
+st.write("Aplicación para limpiar datasets eliminando valores nulos y duplicados.")
+
+st.divider()
+
+archivo = st.file_uploader("📂 Sube tu archivo CSV", type=["csv"])
+
+if archivo is not None:
+
+    df_original = pd.read_csv(archivo)
+
+    df_sin_nulos = df_original.dropna()
+    df_final = df_sin_nulos.drop_duplicates()
+
+    st.subheader("Información del dataset")
+
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        st.metric("Filas originales", df_original.shape[0])
+
+    with col2:
+        st.metric("Después de quitar nulos", df_sin_nulos.shape[0])
+
+    with col3:
+        st.metric("Dataset final", df_final.shape[0])
+
+    st.divider()
+
+    tab1, tab2, tab3 = st.tabs([
+        "Dataset Original",
+        "Sin Valores Nulos",
+        "Dataset Limpio"
+    ])
+
+    with tab1:
+        st.dataframe(df_original)
+
+    with tab2:
+        st.dataframe(df_sin_nulos)
+
+    with tab3:
+        st.dataframe(df_final)
+
+    st.divider()
+
+    csv = df_final.to_csv(index=False).encode("utf-8")
+
+    st.download_button(
+        label="Descargar CSV limpio",
+        data=csv,
+        file_name="dataset_limpio.csv",
+        mime="text/csv"
+    )
+
+else:
+    st.info("Sube un archivo CSV para comenzar.")
+</pre>
+</div>
+
+</section>
+
+<div>
+
+<h1>Tarea - App Streamlit</h1>
+
+<p class="text-secondary mt-3">
+Aplicación desarrollada con Python, Pandas y Streamlit para limpiar datasets eliminando valores nulos y duplicados.
+</p>
+
+</div>
+
+</section>
+
+<section class="code-section container">
+
+<div class="code-box">
+<pre class="terminal" data-text="> launching streamlit app...\n> processing csv data..."></pre>
+</div>
+
+</section>
+
+<section class="section">
+
+<h2 class="section-title">Capturas de la aplicación</h2>
+
+<div class="gallery">
+
+<div class="card-img">
+<img src="images/stream1.png">
+</div>
+
+<div class="card-img">
+<img src="images/stream2.png">
+</div>
+
+<div class="card-img">
+<img src="images/stream3.png">
+</div>
+
+<div class="card-img">
+<img src="images/stream4.png">
+</div>
+
+</div>
+
+</section>
+
+<footer>
+Portafolio | Arturo Ramirez Tejeda © 2026
+</footer>
+
+<script>
+
+const terminals = document.querySelectorAll(".terminal")
+
+let index = 0
+let deleting = false
+
+function animateTerminals(){
+
+terminals.forEach(el=>{
+
+const text = el.getAttribute("data-text")
+
+let visibleText = text.substring(0,index)
+
+el.innerHTML = visibleText + '<span class="cursor"></span>'
+
+})
+
+if(!deleting){
+
+index++
+
+let maxLength = Math.max(...Array.from(terminals).map(el=>el.getAttribute("data-text").length))
+
+if(index > maxLength){
+
+deleting = true
+setTimeout(animateTerminals,1200)
+return
+
+}
+
+}else{
+
+index--
+
+if(index < 0){
+
+deleting = false
+setTimeout(animateTerminals,500)
+return
+
+}
+
+}
+
+setTimeout(animateTerminals,40)
+
+}
+
+animateTerminals()
+
+</script>
+
+</body>
+</html>
