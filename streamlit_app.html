@@ -34,6 +34,7 @@ padding:10px 18px;
 border-radius:8px;
 text-decoration:none;
 transition:.3s;
+z-index:1000;
 }
 
 .back-btn:hover{
@@ -44,7 +45,7 @@ box-shadow:0 0 15px rgba(124,44,255,0.6);
 /* HERO */
 
 .hero{
-height:40vh;
+height:35vh;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -57,6 +58,28 @@ font-size:3.5rem;
 background:linear-gradient(90deg,#ffffff,#c77dff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
+}
+
+/* BLOQUE DE CODIGO */
+
+.code-display{
+max-width:900px;
+margin:40px auto;
+background:#050505;
+border-radius:10px;
+padding:20px;
+font-family:monospace;
+color:#c77dff;
+font-size:13px;
+line-height:1.5;
+box-shadow:0 0 30px rgba(124,44,255,0.15);
+overflow:auto;
+}
+
+.code-display pre{
+margin:0;
+white-space:pre;
+tab-size:4;
 }
 
 /* TERMINAL */
@@ -136,27 +159,6 @@ text-align:center;
 color:#888;
 }
 
-  /* CODIGO STREAMLIT */
-
-.code-display{
-max-width:900px;
-margin:0 auto 40px auto;
-background:#050505;
-border-radius:10px;
-padding:18px;
-font-family:monospace;
-color:#c77dff;
-font-size:12px;
-line-height:1.4;
-box-shadow:0 0 30px rgba(124,44,255,0.15);
-overflow:auto;
-}
-
-.code-display pre{
-margin:0;
-white-space:pre-wrap;
-}
-
 </style>
 
 </head>
@@ -165,29 +167,59 @@ white-space:pre-wrap;
 
 <a class="back-btn" href="index.html">← Volver</a>
 
-<section class="hero">
-  <section class="container">
+<!-- HERO -->
 
-<h4 style="text-align:center; margin-bottom:20px;">Código de la aplicación</h4>
+<section class="hero">
+
+<div>
+
+<h1>Tarea - App Streamlit</h1>
+
+<p class="text-secondary mt-3">
+Aplicación desarrollada con Python, Pandas y Streamlit para limpiar datasets eliminando valores nulos y duplicados.
+</p>
+
+</div>
+
+</section>
+
+<!-- CODIGO -->
+
+<section class="container">
+
+<h4 style="text-align:center;margin-bottom:20px;">Código de la aplicación</h4>
 
 <div class="code-display">
+
 <pre>
 import streamlit as st
 import pandas as pd
 
+# -----------------------------
+# CONFIGURACION DE LA PAGINA
+# -----------------------------
 st.set_page_config(
     page_title="CSV Data Cleaner",
     page_icon="📊",
     layout="wide"
 )
 
+# -----------------------------
+# TITULO
+# -----------------------------
 st.title("📊 CSV Data Cleaner")
 st.write("Aplicación para limpiar datasets eliminando valores nulos y duplicados.")
 
 st.divider()
 
+# -----------------------------
+# SUBIR ARCHIVO
+# -----------------------------
 archivo = st.file_uploader("📂 Sube tu archivo CSV", type=["csv"])
 
+# -----------------------------
+# SI SE SUBE ARCHIVO
+# -----------------------------
 if archivo is not None:
 
     df_original = pd.read_csv(archivo)
@@ -239,21 +271,12 @@ if archivo is not None:
 else:
     st.info("Sube un archivo CSV para comenzar.")
 </pre>
-</div>
-
-</section>
-
-<div>
-
-<h1>Tarea - App Streamlit</h1>
-
-<p class="text-secondary mt-3">
-Aplicación desarrollada con Python, Pandas y Streamlit para limpiar datasets eliminando valores nulos y duplicados.
-</p>
 
 </div>
 
 </section>
+
+<!-- TERMINAL -->
 
 <section class="code-section container">
 
@@ -262,6 +285,8 @@ Aplicación desarrollada con Python, Pandas y Streamlit para limpiar datasets el
 </div>
 
 </section>
+
+<!-- CAPTURAS -->
 
 <section class="section">
 
