@@ -7990,119 +7990,6 @@ ul {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1aba5915-946a-479d-a1e7-18918a612153">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="An%C3%A1lisis-de-datos-usando-NumPy">Análisis de datos usando NumPy<a class="anchor-link" href="#An%C3%A1lisis-de-datos-usando-NumPy">¶</a></h2><p>En esta sección se utiliza la biblioteca <strong>NumPy</strong>, una herramienta muy utilizada en Python para realizar cálculos numéricos y trabajar con arreglos de datos de manera eficiente.</p>
-<p>Primero se importa la biblioteca NumPy y se le asigna el alias <code>np</code>, lo cual es una convención común en Python.</p>
-<p>Posteriormente se crea un arreglo que contiene diferentes valores que representan datos de ventas. Estos datos se almacenan en una estructura llamada <strong>array</strong>, la cual permite realizar operaciones matemáticas de forma rápida.</p>
-<p>Finalmente se utiliza la función <code>np.sum()</code> para calcular la suma total de los valores almacenados en el arreglo.</p>
-<p>Este tipo de operaciones es muy común en análisis de datos, estadísticas y procesamiento de información.</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=fa5b2ea5-ff15-4f7a-a91d-c87140830ac1">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-
-<span class="n">ventas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">])</span>
-
-<span class="n">total</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ventas</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Ventas:"</span><span class="p">,</span> <span class="n">ventas</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Total de ventas:"</span><span class="p">,</span> <span class="n">total</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Ventas: [12  8 15 20 50]
-Total de ventas: 105
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3f672bf3-8bee-4e91-827f-131a2489e265">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="C%C3%A1lculo-de-ventas-utilizando-bucles">Cálculo de ventas utilizando bucles<a class="anchor-link" href="#C%C3%A1lculo-de-ventas-utilizando-bucles">¶</a></h2><p>En esta sección se realiza un análisis simple de una lista de ventas utilizando estructuras básicas de Python.</p>
-<p>Primero se define una lista que contiene diferentes valores de ventas. Luego se calcula el total de las ventas recorriendo la lista con un bucle <code>for</code> y acumulando los valores en una variable.</p>
-<p>Posteriormente se obtiene el promedio de las ventas dividiendo el total entre la cantidad de elementos de la lista.</p>
-<p>Finalmente se utiliza una estructura condicional <code>if</code> dentro de un bucle <code>for</code> para identificar aquellas ventas que superan un valor determinado. Esto permite filtrar y mostrar únicamente los valores que cumplen con la condición establecida.</p>
-<p>Este tipo de estructuras es fundamental para el procesamiento de datos en Python.</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=c06c625b-bc89-4b8a-b446-b6b15c01a4cc">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">ventas</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">250</span><span class="p">]</span>
-
-<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ventas</span><span class="p">:</span>
-    <span class="n">total</span> <span class="o">+=</span> <span class="n">v</span>
-
-<span class="n">promedio</span> <span class="o">=</span> <span class="n">total</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">ventas</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Total:"</span><span class="p">,</span> <span class="n">total</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Promedio:"</span><span class="p">,</span> <span class="n">promedio</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Ventas altas:"</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ventas</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">v</span> <span class="o">&gt;=</span> <span class="mi">250</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Total: 1200
-Promedio: 240.0
-Ventas altas:
-300
-400
-250
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=167ecd8c-b60e-4433-b6cf-1225084209b6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -8120,12 +8007,12 @@ Ventas altas:
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=0ab9e0b9-1c60-4aab-9cfe-5e6dde0c1a26">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=0ab9e0b9-1c60-4aab-9cfe-5e6dde0c1a26">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -8142,64 +8029,12 @@ Ventas altas:
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[4]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>producto</th>
-<th>ventas</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>0</th>
-<td>A</td>
-<td>100</td>
-</tr>
-<tr>
-<th>1</th>
-<td>B</td>
-<td>200</td>
-</tr>
-<tr>
-<th>2</th>
-<td>C</td>
-<td>150</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=11faea50-0832-403b-9ad7-b0d5d32cb175">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=11faea50-0832-403b-9ad7-b0d5d32cb175">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">ventas</span><span class="p">[</span><span class="s2">"ventas"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -8208,24 +8043,12 @@ Ventas altas:
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>np.int64(450)</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b110891c-5634-46e6-825d-acfa3a898099">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=b110891c-5634-46e6-825d-acfa3a898099">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">ventas</span><span class="p">[</span><span class="s2">"ventas"</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
@@ -8234,75 +8057,16 @@ Ventas altas:
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>np.int64(200)</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=aeec4595-47b4-4cf5-9a13-f56d91876c0c">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=aeec4595-47b4-4cf5-9a13-f56d91876c0c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">ventas</span><span class="p">[</span><span class="n">ventas</span><span class="p">[</span><span class="s2">"ventas"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">120</span><span class="p">]</span>
 </pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>producto</th>
-<th>ventas</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>1</th>
-<td>B</td>
-<td>200</td>
-</tr>
-<tr>
-<th>2</th>
-<td>C</td>
-<td>150</td>
-</tr>
-</tbody>
-</table>
-</div>
 </div>
 </div>
 </div>
@@ -8312,7 +8076,7 @@ Ventas altas:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">ventas</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">"ventas.csv"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -8321,12 +8085,12 @@ Ventas altas:
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=32187db7-d397-4026-a0cc-a7e915811fae">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=32187db7-d397-4026-a0cc-a7e915811fae">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
@@ -8336,34 +8100,12 @@ Ventas altas:
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>['tarea1.ipynb',
- 'dataset1.ipynb',
- 'utilidades.py',
- 'titanic.csv',
- '.ipynb_checkpoints',
- 'python_desde_cero_con_IDEA_v2_0.ipynb',
- 'actividad1.ipynb',
- '__pycache__',
- 'file1.txt',
- 'ventas.csv',
- 'script_demo.py']</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=1d0432c2-a097-4a39-b3a0-6c59a9b6c61c">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=1d0432c2-a097-4a39-b3a0-6c59a9b6c61c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -8375,58 +8117,6 @@ Ventas altas:
 
 <span class="n">ventas</span>
 </pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>producto</th>
-<th>ventas</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>0</th>
-<td>A</td>
-<td>100</td>
-</tr>
-<tr>
-<th>1</th>
-<td>B</td>
-<td>200</td>
-</tr>
-<tr>
-<th>2</th>
-<td>C</td>
-<td>150</td>
-</tr>
-</tbody>
-</table>
-</div>
 </div>
 </div>
 </div>
