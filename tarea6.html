@@ -69,11 +69,6 @@ border-radius:12px;
 border:1px solid rgba(199,125,255,0.2);
 }
 
-.description ul{
-margin:0;
-padding-left:20px;
-}
-
 .description li{
 margin-bottom:8px;
 }
@@ -102,6 +97,14 @@ display:flex;
 flex-wrap:wrap;
 gap:25px;
 justify-content:center;
+}
+
+.image-row{
+display:flex;
+justify-content:center;
+gap:40px;
+flex-wrap:wrap;
+margin-top:30px;
 }
 
 .image-box{
@@ -221,37 +224,25 @@ color:#888;
 <h4 style="color:#c77dff;">🔹 Lambda 2 - Análisis (Trigger S3)</h4>
 <ul>
 <li>Se activa cuando ocurre un evento <b>S3 ObjectCreated (PUT)</b>.</li>
-<li>Escucha el bucket en la carpeta <b>clean_data/</b>.</li>
-<li>Cuando se genera <b>clean.csv</b>, la función se ejecuta.</li>
-<li>Lee el dataset limpio.</li>
-<li>Calcula el número total de registros.</li>
+<li>Escucha la carpeta <b>clean_data/</b>.</li>
+<li>Al generarse <b>clean.csv</b>, se ejecuta automáticamente.</li>
+<li>Cuenta el número total de registros.</li>
 <li>Guarda el resultado en <b>result/result.json</b>.</li>
 </ul>
 </div>
 
-<!-- ================= SECCION ABAJO ================= -->
+<!-- ================= SECCION ABAJO (UNA FILA) ================= -->
 
 <section class="section">
 
-<div class="subsection">
-<h3>Segunda Lambda</h3>
-<div class="image-grid">
+<h3 style="text-align:center; color:#c77dff;">Segunda Lambda</h3>
+
+<div class="image-row">
+
 <div class="image-box"><img src="images/l2.jpeg"></div>
-</div>
-</div>
-
-<div class="subsection">
-<h3>Código</h3>
-<div class="image-grid">
 <div class="image-box"><img src="images/l2c.jpeg"></div>
-</div>
-</div>
-
-<div class="subsection">
-<h3>Resultado en bucket</h3>
-<div class="image-grid">
 <div class="image-box"><img src="images/l2r.jpeg"></div>
-</div>
+
 </div>
 
 </section>
