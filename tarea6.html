@@ -58,6 +58,26 @@ background:linear-gradient(90deg,#ffffff,#c77dff);
 -webkit-text-fill-color:transparent;
 }
 
+/* DESCRIPCION */
+
+.description{
+max-width:900px;
+margin:25px auto;
+background:rgba(255,255,255,0.03);
+padding:20px;
+border-radius:12px;
+border:1px solid rgba(199,125,255,0.2);
+}
+
+.description ul{
+margin:0;
+padding-left:20px;
+}
+
+.description li{
+margin-bottom:8px;
+}
+
 /* SECCIONES */
 
 .section{
@@ -80,13 +100,13 @@ margin-bottom:15px;
 .image-grid{
 display:flex;
 flex-wrap:wrap;
-gap:20px;
+gap:25px;
 justify-content:center;
 }
 
 .image-box{
-width:300px;
-height:200px;
+width:420px;
+height:280px;
 border-radius:12px;
 overflow:hidden;
 cursor:pointer;
@@ -114,7 +134,7 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.85);
+background:rgba(0,0,0,0.9);
 justify-content:center;
 align-items:center;
 z-index:2000;
@@ -154,6 +174,19 @@ color:#888;
 <h1>Tarea 6 - Lambdas integradas a triggers</h1>
 </section>
 
+<!-- ================= DESCRIPCION LAMBDA 1 ================= -->
+
+<div class="description">
+<h4 style="color:#c77dff;">🔹 Lambda 1 - Procesamiento (EventBridge)</h4>
+<ul>
+<li>Se ejecuta automáticamente mediante <b>EventBridge (cron cada 5 minutos)</b>.</li>
+<li>Realiza limpieza de datos de forma programada.</li>
+<li>Lee el archivo original desde S3.</li>
+<li>Elimina valores nulos y duplicados.</li>
+<li>Genera un nuevo archivo limpio en <b>clean_data/clean.csv</b>.</li>
+</ul>
+</div>
+
 <!-- ================= SECCION ARRIBA ================= -->
 
 <section class="section">
@@ -181,6 +214,20 @@ color:#888;
 </div>
 
 </section>
+
+<!-- ================= DESCRIPCION LAMBDA 2 ================= -->
+
+<div class="description">
+<h4 style="color:#c77dff;">🔹 Lambda 2 - Análisis (Trigger S3)</h4>
+<ul>
+<li>Se activa cuando ocurre un evento <b>S3 ObjectCreated (PUT)</b>.</li>
+<li>Escucha el bucket en la carpeta <b>clean_data/</b>.</li>
+<li>Cuando se genera <b>clean.csv</b>, la función se ejecuta.</li>
+<li>Lee el dataset limpio.</li>
+<li>Calcula el número total de registros.</li>
+<li>Guarda el resultado en <b>result/result.json</b>.</li>
+</ul>
+</div>
 
 <!-- ================= SECCION ABAJO ================= -->
 
