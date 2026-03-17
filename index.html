@@ -151,6 +151,82 @@ text-align:center;
 color:#888;
 }
 
+/* ── LIGHTBOX ── */
+
+.cert-img{
+width:100%;
+height:100%;
+object-fit:cover;
+border-radius:14px;
+cursor:zoom-in;
+transition:transform .3s, filter .3s;
+}
+
+.cert-img:hover{
+filter:brightness(1.12);
+}
+
+#lightbox-overlay{
+display:none;
+position:fixed;
+inset:0;
+z-index:9999;
+background:rgba(0,0,0,0.85);
+backdrop-filter:blur(8px);
+-webkit-backdrop-filter:blur(8px);
+align-items:center;
+justify-content:center;
+animation:fadeIn .25s ease;
+}
+
+#lightbox-overlay.active{
+display:flex;
+}
+
+@keyframes fadeIn{
+from{opacity:0}
+to{opacity:1}
+}
+
+#lightbox-img{
+max-width:90vw;
+max-height:85vh;
+border-radius:16px;
+box-shadow:0 0 80px rgba(124,44,255,0.45), 0 0 0 1px rgba(199,125,255,0.2);
+animation:zoomIn .28s cubic-bezier(.22,.68,0,1.2);
+object-fit:contain;
+}
+
+@keyframes zoomIn{
+from{transform:scale(.85);opacity:0}
+to{transform:scale(1);opacity:1}
+}
+
+#lightbox-close{
+position:fixed;
+top:22px;
+right:28px;
+background:rgba(199,125,255,0.15);
+border:1px solid rgba(199,125,255,0.4);
+color:#c77dff;
+font-size:1.4rem;
+line-height:1;
+width:42px;
+height:42px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+transition:background .2s, transform .2s;
+z-index:10000;
+}
+
+#lightbox-close:hover{
+background:rgba(199,125,255,0.35);
+transform:scale(1.1) rotate(90deg);
+}
+
 </style>
 
 </head>
@@ -349,24 +425,31 @@ Portafolio de desarrollo y proyectos académicos
 <div class="gallery">
 
 <div class="card-portfolio">
-<img src="images/aws1.jpeg" style="width:100%; height:100%; object-fit:cover; border-radius:14px;">
+<img src="images/aws1.jpeg" class="cert-img" alt="Certificación AWS" onclick="openLightbox(this)">
 </div>
 
 <div class="card-portfolio">
-<img src="images/cert2.png" style="width:100%; height:100%; object-fit:cover; border-radius:14px;">
+<img src="images/cert2.png" class="cert-img" alt="Certificación 2" onclick="openLightbox(this)">
 </div>
 
 <div class="card-portfolio">
-<img src="images/cert3.png" style="width:100%; height:100%; object-fit:cover; border-radius:14px;">
+<img src="images/cert3.png" class="cert-img" alt="Certificación 3" onclick="openLightbox(this)">
 </div>
 
 <div class="card-portfolio">
-<img src="images/cert4.png" style="width:100%; height:100%; object-fit:cover; border-radius:14px;">
+<img src="images/cert4.png" class="cert-img" alt="Certificación 4" onclick="openLightbox(this)">
 </div>
 
 </div>
 
 </section>
+
+<!-- LIGHTBOX -->
+
+<div id="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Vista ampliada de certificación" onclick="handleOverlayClick(event)">
+<button id="lightbox-close" onclick="closeLightbox()" aria-label="Cerrar">✕</button>
+<img id="lightbox-img" src="" alt="">
+</div>
 
 <!-- PROYECTO -->
 
@@ -397,6 +480,8 @@ Portafolio | Arturo Ramirez Tejeda © 2026
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
+
+/* ── TERMINAL ANIMATION ── */
 
 const terminals = document.querySelectorAll(".terminal")
 
@@ -448,6 +533,33 @@ setTimeout(animateTerminals,40)
 }
 
 animateTerminals()
+
+/* ── LIGHTBOX ── */
+
+const overlay   = document.getElementById('lightbox-overlay')
+const lbImg     = document.getElementById('lightbox-img')
+
+function openLightbox(imgEl){
+  lbImg.src = imgEl.src
+  lbImg.alt = imgEl.alt
+  overlay.classList.add('active')
+  document.body.style.overflow = 'hidden'
+}
+
+function closeLightbox(){
+  overlay.classList.remove('active')
+  document.body.style.overflow = ''
+}
+
+function handleOverlayClick(e){
+  // Cierra solo si el click es sobre el fondo, no sobre la imagen
+  if(e.target === overlay) closeLightbox()
+}
+
+// Cerrar con tecla Escape
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape') closeLightbox()
+})
 
 </script>
 
