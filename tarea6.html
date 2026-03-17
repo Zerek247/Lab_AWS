@@ -69,10 +69,6 @@ border-radius:12px;
 border:1px solid rgba(199,125,255,0.2);
 }
 
-.description li{
-margin-bottom:8px;
-}
-
 /* SECCIONES */
 
 .section{
@@ -102,9 +98,21 @@ justify-content:center;
 .image-row{
 display:flex;
 justify-content:center;
-gap:40px;
+gap:50px;
 flex-wrap:wrap;
 margin-top:30px;
+text-align:center;
+}
+
+.image-group{
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+.image-group h4{
+color:#c77dff;
+margin-bottom:10px;
 }
 
 .image-box{
@@ -182,11 +190,10 @@ color:#888;
 <div class="description">
 <h4 style="color:#c77dff;">🔹 Lambda 1 - Procesamiento (EventBridge)</h4>
 <ul>
-<li>Se ejecuta automáticamente mediante <b>EventBridge (cron cada 5 minutos)</b>.</li>
-<li>Realiza limpieza de datos de forma programada.</li>
-<li>Lee el archivo original desde S3.</li>
-<li>Elimina valores nulos y duplicados.</li>
-<li>Genera un nuevo archivo limpio en <b>clean_data/clean.csv</b>.</li>
+<li>Se ejecuta mediante <b>EventBridge (cron cada 5 minutos)</b>.</li>
+<li>Realiza limpieza automática de datos.</li>
+<li>Elimina nulos y duplicados.</li>
+<li>Genera <b>clean_data/clean.csv</b>.</li>
 </ul>
 </div>
 
@@ -223,15 +230,14 @@ color:#888;
 <div class="description">
 <h4 style="color:#c77dff;">🔹 Lambda 2 - Análisis (Trigger S3)</h4>
 <ul>
-<li>Se activa cuando ocurre un evento <b>S3 ObjectCreated (PUT)</b>.</li>
-<li>Escucha la carpeta <b>clean_data/</b>.</li>
-<li>Al generarse <b>clean.csv</b>, se ejecuta automáticamente.</li>
-<li>Cuenta el número total de registros.</li>
-<li>Guarda el resultado en <b>result/result.json</b>.</li>
+<li>Se activa con <b>S3 ObjectCreated (PUT)</b>.</li>
+<li>Detecta archivos en <b>clean_data/</b>.</li>
+<li>Cuenta registros del dataset limpio.</li>
+<li>Guarda resultado en <b>result/result.json</b>.</li>
 </ul>
 </div>
 
-<!-- ================= SECCION ABAJO (UNA FILA) ================= -->
+<!-- ================= SECCION ABAJO (UNA FILA CON TITULOS) ================= -->
 
 <section class="section">
 
@@ -239,9 +245,20 @@ color:#888;
 
 <div class="image-row">
 
+<div class="image-group">
+<h4>Segunda Lambda</h4>
 <div class="image-box"><img src="images/l2.jpeg"></div>
+</div>
+
+<div class="image-group">
+<h4>Código</h4>
 <div class="image-box"><img src="images/l2c.jpeg"></div>
+</div>
+
+<div class="image-group">
+<h4>Resultado en bucket</h4>
 <div class="image-box"><img src="images/l2r.jpeg"></div>
+</div>
 
 </div>
 
