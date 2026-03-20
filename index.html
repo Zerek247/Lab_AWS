@@ -1,576 +1,912 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <title>Portafolio | Arturo Ramirez Tejeda</title>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-
 <style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-body{
-margin:0;
-font-family:'Inter',sans-serif;
-color:white;
-background:radial-gradient(circle at top,#1a0033 0%,#050505 45%,#000000 100%);
+:root {
+  --bg-deep: #050505;
+  --bg-card: rgba(255,255,255,0.025);
+  --purple: #c77dff;
+  --purple-dim: rgba(199,125,255,0.12);
+  --purple-glow: rgba(124,44,255,0.25);
+  --yellow: #f5c518;
+  --green: #00e5a0;
+  --red: #ff4d6d;
+  --blue: #4f8ef7;
+  --text: #e8e8f0;
+  --muted: #777;
+  --border: rgba(199,125,255,0.15);
 }
 
-/* NAVBAR */
-
-.navbar{
-background:rgba(0,0,0,0.6);
-backdrop-filter:blur(12px);
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+  background: radial-gradient(ellipse at top, #1a0033 0%, #050505 45%, #000 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-/* HERO */
-
-.hero{
-height:55vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
+/* ── AMBIENT PARTICLES ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(1.2px 1.2px at 8% 15%, rgba(199,125,255,0.35) 0%, transparent 100%),
+    radial-gradient(1px 1px at 25% 55%, rgba(245,197,24,0.2) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 50% 10%, rgba(199,125,255,0.25) 0%, transparent 100%),
+    radial-gradient(1px 1px at 68% 75%, rgba(0,229,160,0.2) 0%, transparent 100%),
+    radial-gradient(1px 1px at 82% 30%, rgba(199,125,255,0.18) 0%, transparent 100%),
+    radial-gradient(1.2px 1.2px at 92% 85%, rgba(79,142,247,0.2) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
 }
 
-.hero h1{
-font-family:'Orbitron',sans-serif;
-font-size:4rem;
-background:linear-gradient(90deg,#ffffff,#c77dff);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+/* ── SCROLL SMOOTH ── */
+html { scroll-behavior: smooth; }
+
+/* ── NAVBAR ── */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+  transition: background 0.3s;
+}
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-brand {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--purple);
+  text-decoration: none;
+  letter-spacing: 2px;
+}
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--purple);
+  transition: width 0.3s;
+}
+.nav-links a:hover { color: var(--purple); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--purple);
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
-/* TERMINAL */
+/* ── HERO ── */
+.hero {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 24px 40px;
+  position: relative;
+  z-index: 1;
+}
+.hero-inner { max-width: 750px; }
 
-.code-section{
-padding:10px 0 30px 0;
-display:flex;
-justify-content:center;
+.hero-greeting {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.85rem;
+  color: var(--purple);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeDown 0.6s ease 0.2s forwards;
+}
+.hero h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4.2rem);
+  font-weight: 900;
+  background: linear-gradient(135deg, #ffffff 0%, #c77dff 60%, #f5c518 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: fadeDown 0.7s ease 0.35s forwards;
+}
+.hero-sub {
+  font-size: 1.05rem;
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 550px;
+  margin: 0 auto 36px;
+  opacity: 0;
+  animation: fadeDown 0.7s ease 0.5s forwards;
 }
 
-.code-box{
-width:100%;
-max-width:850px;
-background:#050505;
-border-radius:10px;
-padding:25px;
-font-family:monospace;
-color:#c77dff;
-box-shadow:0 0 40px rgba(124,44,255,0.15);
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.cursor{
-display:inline-block;
-width:8px;
-background:#c77dff;
-margin-left:4px;
-animation:blink 1s infinite;
+/* ── TERMINAL ── */
+.terminal-wrap {
+  max-width: 700px;
+  margin: 0 auto 0;
+  opacity: 0;
+  animation: fadeDown 0.7s ease 0.65s forwards;
+}
+.terminal-box {
+  background: rgba(5,5,5,0.8);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 24px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.88rem;
+  color: var(--purple);
+  position: relative;
+  box-shadow: 0 0 40px rgba(124,44,255,0.1);
+}
+.terminal-dots {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.terminal-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.terminal-dots .dot-red { background: var(--red); }
+.terminal-dots .dot-yellow { background: var(--yellow); }
+.terminal-dots .dot-green { background: var(--green); }
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 14px;
+  background: var(--purple);
+  margin-left: 3px;
+  vertical-align: middle;
+  animation: blink 1s infinite;
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* ── SECTION COMMON ── */
+.section {
+  padding: 80px 0;
+  position: relative;
+  z-index: 1;
+}
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 50px;
+}
+.section-number {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: 2.2rem;
+  color: rgba(199,125,255,0.12);
+  line-height: 1;
+  min-width: 55px;
+}
+.section-header h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 1.5px;
+}
+.section-header .accent-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border), transparent);
 }
 
-@keyframes blink{
-0%{opacity:1}
-50%{opacity:0}
-100%{opacity:1}
+/* ── TECH GRID ── */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 20px;
+}
+.tech-item {
+  padding: 28px 16px;
+  border-radius: 14px;
+  background: var(--bg-card);
+  border: 1px solid rgba(199,125,255,0.08);
+  text-align: center;
+  transition: transform 0.35s, background 0.35s, box-shadow 0.35s;
+  cursor: default;
+}
+.tech-item:hover {
+  transform: translateY(-8px);
+  background: rgba(199,125,255,0.08);
+  box-shadow: 0 12px 40px var(--purple-glow);
+  border-color: var(--border);
+}
+.tech-item i {
+  font-size: 48px;
+  margin-bottom: 12px;
+  display: block;
+}
+.tech-item p {
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-weight: 500;
 }
 
-/* SECTIONS */
-
-.section{
-padding:70px 0;
+/* ── GALLERY GRID ── */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+.card-portfolio {
+  position: relative;
+  height: 200px;
+  border-radius: 14px;
+  background: var(--bg-card);
+  border: 1px solid rgba(199,125,255,0.08);
+  overflow: hidden;
+  transition: transform 0.4s, box-shadow 0.4s, border-color 0.4s;
+}
+.card-portfolio:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 50px var(--purple-glow);
+  border-color: var(--border);
+}
+.card-portfolio a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.card-portfolio img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+  transition: transform 0.5s, filter 0.4s;
+  filter: brightness(0.85) saturate(0.9);
+}
+.card-portfolio:hover img {
+  transform: scale(1.05);
+  filter: brightness(1) saturate(1);
 }
 
-.section-title{
-text-align:center;
-margin-bottom:60px;
+/* Card overlay label */
+.card-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 14px 16px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.85));
+  border-radius: 0 0 14px 14px;
+  pointer-events: none;
+}
+.card-label span {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.72rem;
+  color: var(--yellow);
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+.card-label p {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 3px;
 }
 
-/* TECH GRID */
-
-.tech-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-gap:35px;
-text-align:center;
+/* ── CERTIFICATIONS ── */
+.cert-img {
+  cursor: zoom-in;
+  transition: filter 0.3s;
+}
+.cert-img:hover {
+  filter: brightness(1.15);
 }
 
-.tech-item{
-padding:30px;
-border-radius:14px;
-background:rgba(255,255,255,0.03);
-transition:.35s;
+/* ── PROJECT HIGHLIGHT ── */
+.project-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px var(--purple-glow);
+}
+.project-image {
+  min-height: 300px;
+  overflow: hidden;
+  background: #0a0a0f;
+  position: relative;
+}
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+  filter: brightness(0.9);
+}
+.project-card:hover .project-image img {
+  transform: scale(1.03);
+  filter: brightness(1);
+}
+.project-content {
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.project-content h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--yellow), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 16px;
+}
+.project-content p {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.75;
+  margin-bottom: 24px;
+}
+.project-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+.project-tag {
+  font-size: 0.68rem;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.5px;
+  background: rgba(245,197,24,0.08);
+  color: var(--yellow);
+  border: 1px solid rgba(245,197,24,0.2);
+}
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--purple);
+  text-decoration: none;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: color 0.3s, gap 0.3s;
+}
+.project-link:hover {
+  color: var(--yellow);
+  gap: 14px;
 }
 
-.tech-item:hover{
-transform:translateY(-8px);
-background:rgba(199,125,255,0.08);
-box-shadow:0 10px 40px rgba(124,44,255,0.2);
+/* ── FOOTER ── */
+.footer {
+  text-align: center;
+  padding: 40px 24px;
+  color: #333;
+  font-size: 0.75rem;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 2px;
+  border-top: 1px solid rgba(199,125,255,0.06);
+  position: relative;
+  z-index: 1;
 }
 
-.tech-item i{
-font-size:55px;
-margin-bottom:12px;
+/* ── SCROLL ANIMATIONS ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
 }
-
-/* GALERIA */
-
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:30px;
-}
-
-.card-portfolio{
-height:190px;
-border-radius:14px;
-background:linear-gradient(145deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01));
-display:flex;
-align-items:center;
-justify-content:center;
-color:#aaa;
-transition:.35s;
-overflow:hidden;
-}
-
-.card-portfolio:hover{
-transform:translateY(-8px);
-background:rgba(199,125,255,0.12);
-box-shadow:0 10px 35px rgba(124,44,255,0.25);
-}
-
-footer{
-padding:40px;
-text-align:center;
-color:#888;
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ── LIGHTBOX ── */
+#lightbox-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0,0,0,0.88);
+  backdrop-filter: blur(10px);
+  align-items: center;
+  justify-content: center;
+  animation: lbFade 0.25s ease;
+}
+#lightbox-overlay.active { display: flex; }
+@keyframes lbFade { from { opacity: 0; } to { opacity: 1; } }
 
-.cert-img{
-width:100%;
-height:100%;
-object-fit:cover;
-border-radius:14px;
-cursor:zoom-in;
-transition:transform .3s, filter .3s;
+#lightbox-img {
+  max-width: 92vw;
+  max-height: 88vh;
+  border-radius: 12px;
+  box-shadow: 0 0 80px var(--purple-glow);
+  animation: lbZoom 0.3s cubic-bezier(.22,.68,0,1.15);
+  object-fit: contain;
+}
+@keyframes lbZoom { from { transform: scale(0.88); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+#lightbox-close {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  background: rgba(199,125,255,0.12);
+  border: 1px solid rgba(199,125,255,0.35);
+  color: var(--purple);
+  font-size: 1.3rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.25s;
+  z-index: 10000;
+}
+#lightbox-close:hover {
+  background: rgba(199,125,255,0.3);
+  transform: scale(1.1) rotate(90deg);
 }
 
-.cert-img:hover{
-filter:brightness(1.12);
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.95);
+    padding: 20px 24px;
+    gap: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-toggle { display: block; }
+  .project-card { grid-template-columns: 1fr; }
+  .project-image { min-height: 220px; }
+  .hero h1 { font-size: 2.2rem; }
 }
-
-#lightbox-overlay{
-display:none;
-position:fixed;
-inset:0;
-z-index:9999;
-background:rgba(0,0,0,0.85);
-backdrop-filter:blur(8px);
--webkit-backdrop-filter:blur(8px);
-align-items:center;
-justify-content:center;
-animation:fadeIn .25s ease;
-}
-
-#lightbox-overlay.active{
-display:flex;
-}
-
-@keyframes fadeIn{
-from{opacity:0}
-to{opacity:1}
-}
-
-#lightbox-img{
-max-width:90vw;
-max-height:85vh;
-border-radius:16px;
-box-shadow:0 0 80px rgba(124,44,255,0.45), 0 0 0 1px rgba(199,125,255,0.2);
-animation:zoomIn .28s cubic-bezier(.22,.68,0,1.2);
-object-fit:contain;
-}
-
-@keyframes zoomIn{
-from{transform:scale(.85);opacity:0}
-to{transform:scale(1);opacity:1}
-}
-
-#lightbox-close{
-position:fixed;
-top:22px;
-right:28px;
-background:rgba(199,125,255,0.15);
-border:1px solid rgba(199,125,255,0.4);
-color:#c77dff;
-font-size:1.4rem;
-line-height:1;
-width:42px;
-height:42px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-cursor:pointer;
-transition:background .2s, transform .2s;
-z-index:10000;
-}
-
-#lightbox-close:hover{
-background:rgba(199,125,255,0.35);
-transform:scale(1.1) rotate(90deg);
-}
-
 </style>
-
 </head>
 
 <body>
 
-<nav class="navbar navbar-expand-lg fixed-top">
-
-<div class="container">
-
-<a class="navbar-brand text-white">Portafolio</a>
-
-<div class="navbar-nav ms-auto">
-
-<a class="nav-link text-light" href="#inicio">Inicio</a>
-<a class="nav-link text-light" href="#tecnologias">Tecnologías</a>
-<a class="nav-link text-light" href="#tareas">Tareas</a>
-<a class="nav-link text-light" href="#ejercicios">Ejercicios</a>
-<a class="nav-link text-light" href="#certificaciones">Certificaciones</a>
-<a class="nav-link text-light" href="#proyecto">Proyecto</a>
-
-</div>
-
-</div>
-
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a class="nav-brand" href="#">PORTAFOLIO</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+    <div class="nav-links">
+      <a href="#inicio">Inicio</a>
+      <a href="#tecnologias">Tecnologías</a>
+      <a href="#tareas">Tareas</a>
+      <a href="#ejercicios">Ejercicios</a>
+      <a href="#certificaciones">Certificaciones</a>
+      <a href="#proyecto">Proyecto</a>
+    </div>
+  </div>
 </nav>
 
-<section class="hero container" id="inicio">
-
-<div>
-
-<h1>Arturo Ramirez Tejeda</h1>
-
-<p class="mt-3 text-secondary">
-Portafolio de desarrollo y proyectos académicos
-</p>
-
-</div>
-
-</section>
-
-<!-- TERMINAL INTRO -->
-
-<section class="code-section container">
-
-<div class="code-box">
-<pre class="terminal" data-text="> initializing portfolio...\n> loading technologies..."></pre>
-</div>
-
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-inner">
+    <p class="hero-greeting">Bienvenido a mi portafolio</p>
+    <h1>Arturo Ramirez<br>Tejeda</h1>
+    <p class="hero-sub">
+      Desarrollo, ingeniería de datos y proyectos académicos.
+      Explora mis tareas, ejercicios, certificaciones y mi proyecto final.
+    </p>
+    <div class="terminal-wrap">
+      <div class="terminal-box">
+        <div class="terminal-dots">
+          <span class="dot-red"></span>
+          <span class="dot-yellow"></span>
+          <span class="dot-green"></span>
+        </div>
+        <pre id="terminal-text"></pre>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- TECNOLOGIAS -->
-
-<section class="section container" id="tecnologias">
-
-<h2 class="section-title">Tecnologías</h2>
-
-<div class="tech-grid">
-
-<div class="tech-item">
-<i class="devicon-java-plain colored"></i>
-<p>Java</p>
-</div>
-
-<div class="tech-item">
-<i class="devicon-python-plain colored"></i>
-<p>Python</p>
-</div>
-
-<div class="tech-item">
-<i class="devicon-cplusplus-plain colored"></i>
-<p>C++</p>
-</div>
-
-<div class="tech-item">
-<i class="devicon-csharp-plain colored"></i>
-<p>C#</p>
-</div>
-
-<div class="tech-item">
-<i class="devicon-mysql-plain colored"></i>
-<p>MySQL</p>
-</div>
-
-<div class="tech-item">
-<i class="devicon-react-original colored"></i>
-<p>React</p>
-</div>
-
-</div>
-
+<section class="section" id="tecnologias">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-number">01</span>
+      <h2>Tecnologías</h2>
+      <div class="accent-line"></div>
+    </div>
+    <div class="tech-grid reveal">
+      <div class="tech-item">
+        <i class="devicon-java-plain colored"></i>
+        <p>Java</p>
+      </div>
+      <div class="tech-item">
+        <i class="devicon-python-plain colored"></i>
+        <p>Python</p>
+      </div>
+      <div class="tech-item">
+        <i class="devicon-cplusplus-plain colored"></i>
+        <p>C++</p>
+      </div>
+      <div class="tech-item">
+        <i class="devicon-csharp-plain colored"></i>
+        <p>C#</p>
+      </div>
+      <div class="tech-item">
+        <i class="devicon-mysql-plain colored"></i>
+        <p>MySQL</p>
+      </div>
+      <div class="tech-item">
+        <i class="devicon-react-original colored"></i>
+        <p>React</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- TAREAS -->
+<section class="section" id="tareas">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-number">02</span>
+      <h2>Tareas</h2>
+      <div class="accent-line"></div>
+    </div>
+    <div class="gallery reveal">
 
-<section class="section container" id="tareas">
+      <div class="card-portfolio">
+        <a href="pages/tarea1.html">
+          <img src="images/im2.png" alt="Tarea 1">
+        </a>
+        <div class="card-label">
+          <span>Tarea 01</span>
+        </div>
+      </div>
 
-<div class="code-section">
-<div class="code-box">
-<pre class="terminal" data-text="> loading tasks..."></pre>
-</div>
-</div>
+      <div class="card-portfolio">
+        <a href="pages/tarea2.html">
+          <img src="images/im5.png" alt="Tarea 2">
+        </a>
+        <div class="card-label">
+          <span>Tarea 02</span>
+        </div>
+      </div>
 
-<h2 class="section-title">Tareas</h2>
+      <div class="card-portfolio">
+        <a href="pages/dataset1.html">
+          <img src="images/im3.png" alt="Dataset">
+        </a>
+        <div class="card-label">
+          <span>Dataset</span>
+        </div>
+      </div>
 
-<div class="gallery">
+      <div class="card-portfolio">
+        <a href="pages/streamlit_app.html">
+          <img src="images/im6.png" alt="Streamlit App">
+        </a>
+        <div class="card-label">
+          <span>Streamlit App</span>
+        </div>
+      </div>
 
-<div class="card-portfolio">
-  <a href="pages/tarea1.html">
-    <img src="images/im2.png" style="width:100%; height:100%; object-fit:cover; border-radius:14px;">
-  </a>
-</div>
+      <div class="card-portfolio">
+        <a href="pages/combat.html">
+          <img src="images/im7.png" alt="Combat">
+        </a>
+        <div class="card-label">
+          <span>Combat</span>
+        </div>
+      </div>
 
-<div class="card-portfolio">
-  <a href="pages/tarea2.html">
-    <img src="images/im5.png" style="width:100%; height:100%; object-fit:cover; border-radius:14px;">
-  </a>
-</div>
+      <div class="card-portfolio">
+        <a href="pages/tarea6.html">
+          <img src="images/im9.png" alt="Tarea 6">
+        </a>
+        <div class="card-label">
+          <span>Tarea 06</span>
+        </div>
+      </div>
 
-<div class="card-portfolio">
-  <a href="pages/dataset1.html">
-    <img src="images/im3.png" style="width:100%; height:100%; object-fit:cover; border-radius:14px;">
-  </a>
-</div>
-
-<div class="card-portfolio">
-  <a href="pages/streamlit_app.html">
-    <img src="images/im6.png" style="width:100%; height:100%; object-fit:cover; border-radius:14px;">
-  </a>
-</div>
-
-<div class="card-portfolio">
-  <a href="pages/combat.html">
-    <img src="images/im7.png" style="width:100%; height:100%; object-fit:cover; border-radius:14px;">
-  </a>
-</div>
-
-<div class="card-portfolio">
-  <a href="pages/tarea6.html">
-    <img src="images/im9.png" style="width:100%; height:100%; object-fit:cover; border-radius:14px;">
-  </a>
-</div>
-
-</div>
-
+    </div>
+  </div>
 </section>
 
 <!-- EJERCICIOS -->
+<section class="section" id="ejercicios">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-number">03</span>
+      <h2>Ejercicios en Clase</h2>
+      <div class="accent-line"></div>
+    </div>
+    <div class="gallery reveal">
 
-<section class="section container" id="ejercicios">
+      <div class="card-portfolio">
+        <a href="pages/actividad1.html">
+          <img src="images/im1.png" alt="Actividad 1">
+        </a>
+        <div class="card-label">
+          <span>Actividad 01</span>
+        </div>
+      </div>
 
-<div class="code-section">
-<div class="code-box">
-<pre class="terminal" data-text="> loading class exercises..."></pre>
-</div>
-</div>
+      <div class="card-portfolio">
+        <a href="pages/actividad2.html">
+          <img src="images/im4.png" alt="Actividad 2">
+        </a>
+        <div class="card-label">
+          <span>Actividad 02</span>
+        </div>
+      </div>
 
-<h2 class="section-title">Ejercicios en Clase</h2>
+      <div class="card-portfolio">
+        <a href="pages/challenge.html">
+          <img src="images/im8.png" alt="Challenge">
+        </a>
+        <div class="card-label">
+          <span>Challenge</span>
+        </div>
+      </div>
 
-<div class="gallery">
+      <div class="card-portfolio">
+        <a href="pages/Netflix.html">
+          <img src="images/im10.png" alt="Netflix">
+        </a>
+        <div class="card-label">
+          <span>Netflix</span>
+        </div>
+      </div>
 
-<div class="card-portfolio">
-  <a href="pages/actividad1.html">
-    <img src="images/im1.png" style="width:100%; height:100%; object-fit:cover; border-radius:14px;">
-  </a>
-</div>
+      <div class="card-portfolio">
+        <a href="pages/sql.html">
+          <img src="images/im11.png" alt="SQL">
+        </a>
+        <div class="card-label">
+          <span>SQL</span>
+        </div>
+      </div>
 
-<div class="card-portfolio">
-  <a href="pages/actividad2.html">
-    <img src="images/im4.png" style="width:100%; height:100%; object-fit:cover; border-radius:14px;">
-  </a>
-</div>
-
-<div class="card-portfolio">
-  <a href="pages/challenge.html">
-    <img src="images/im8.png" style="width:100%; height:100%; object-fit:cover; border-radius:14px;">
-  </a>
-</div>
-
-<div class="card-portfolio">
-  <a href="pages/Netflix.html">
-    <img src="images/im10.png" style="width:100%; height:100%; object-fit:cover; border-radius:14px;">
-  </a>
-</div>
-
-<div class="card-portfolio">
-  <a href="pages/sql.html">
-    <img src="images/im11.png" style="width:100%; height:100%; object-fit:cover; border-radius:14px;">
-  </a>
-</div>
-
-</div>
-
+    </div>
+  </div>
 </section>
 
 <!-- CERTIFICACIONES -->
+<section class="section" id="certificaciones">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-number">04</span>
+      <h2>Certificaciones</h2>
+      <div class="accent-line"></div>
+    </div>
+    <div class="gallery reveal">
 
-<section class="section container" id="certificaciones">
+      <div class="card-portfolio">
+        <img src="images/aws1.jpeg" class="cert-img" alt="AWS Certification" onclick="openLightbox(this)">
+        <div class="card-label">
+          <span>AWS Academy</span>
+        </div>
+      </div>
 
-<div class="code-section">
-<div class="code-box">
-<pre class="terminal" data-text="> loading certifications..."></pre>
-</div>
-</div>
+      <div class="card-portfolio">
+        <img src="images/cert2.png" class="cert-img" alt="Certificación 2" onclick="openLightbox(this)">
+        <div class="card-label">
+          <span>Certificación</span>
+        </div>
+      </div>
 
-<h2 class="section-title">Certificaciones</h2>
+      <div class="card-portfolio">
+        <img src="images/cert3.png" class="cert-img" alt="Certificación 3" onclick="openLightbox(this)">
+        <div class="card-label">
+          <span>Certificación</span>
+        </div>
+      </div>
 
-<div class="gallery">
+      <div class="card-portfolio">
+        <img src="images/cert4.png" class="cert-img" alt="Certificación 4" onclick="openLightbox(this)">
+        <div class="card-label">
+          <span>Certificación</span>
+        </div>
+      </div>
 
-<div class="card-portfolio">
-<img src="images/aws1.jpeg" class="cert-img" alt="Certificación AWS" onclick="openLightbox(this)">
-</div>
-
-<div class="card-portfolio">
-<img src="images/cert2.png" class="cert-img" alt="Certificación 2" onclick="openLightbox(this)">
-</div>
-
-<div class="card-portfolio">
-<img src="images/cert3.png" class="cert-img" alt="Certificación 3" onclick="openLightbox(this)">
-</div>
-
-<div class="card-portfolio">
-<img src="images/cert4.png" class="cert-img" alt="Certificación 4" onclick="openLightbox(this)">
-</div>
-
-</div>
-
+    </div>
+  </div>
 </section>
+
+<!-- PROYECTO FINAL -->
+<section class="section" id="proyecto">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-number">05</span>
+      <h2>Proyecto Final</h2>
+      <div class="accent-line"></div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-image">
+        <!-- Replace with your project screenshot -->
+        <img src="images/project_home.png" alt="NYC Taxi Intelligence">
+      </div>
+      <div class="project-content">
+        <h3>🚕 NYC Taxi Intelligence</h3>
+        <p>
+          Pipeline de datos end-to-end construido en AWS — ingesta, transformación
+          y visualización de más de 173 millones de viajes de taxi en NYC,
+          con consultas históricas on-demand desde 2009.
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">AWS Lambda</span>
+          <span class="project-tag">S3</span>
+          <span class="project-tag">Spark</span>
+          <span class="project-tag">EC2</span>
+          <span class="project-tag">Streamlit</span>
+          <span class="project-tag">Docker</span>
+        </div>
+        <a href="portfolio.html" class="project-link">
+          Ver Proyecto Completo →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+  Portafolio | Arturo Ramirez Tejeda © 2026
+</div>
 
 <!-- LIGHTBOX -->
-
-<div id="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Vista ampliada de certificación" onclick="handleOverlayClick(event)">
-<button id="lightbox-close" onclick="closeLightbox()" aria-label="Cerrar">✕</button>
-<img id="lightbox-img" src="" alt="">
+<div id="lightbox-overlay" onclick="handleOverlayClick(event)">
+  <button id="lightbox-close" onclick="closeLightbox()" aria-label="Cerrar">✕</button>
+  <img id="lightbox-img" src="" alt="">
 </div>
-
-<!-- PROYECTO -->
-
-<section class="section container" id="proyecto">
-
-<div class="code-section">
-<div class="code-box">
-<pre class="terminal" data-text="> loading final project..."></pre>
-</div>
-</div>
-
-<h2 class="section-title">Proyecto Final</h2>
-
-<div class="gallery">
-
-<div class="card-portfolio"></div>
-
-</div>
-
-</section>
-
-<footer>
-
-Portafolio | Arturo Ramirez Tejeda © 2026
-
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-
 /* ── TERMINAL ANIMATION ── */
+const lines = [
+  '> initializing portfolio...',
+  '> loading technologies...',
+  '> fetching projects...',
+  '> ready.'
+];
 
-const terminals = document.querySelectorAll(".terminal")
+const termEl = document.getElementById('terminal-text');
+let lineIdx = 0, charIdx = 0, isDeleting = false, pauseTimer = 0;
 
-let index = 0
-let deleting = false
+function typeTerminal() {
+  if (lineIdx >= lines.length) {
+    termEl.innerHTML = lines[lines.length - 1] + '<span class="cursor"></span>';
+    return;
+  }
 
-function animateTerminals(){
+  const currentLine = lines[lineIdx];
 
-terminals.forEach(el=>{
+  if (!isDeleting) {
+    charIdx++;
+    termEl.innerHTML = currentLine.substring(0, charIdx) + '<span class="cursor"></span>';
 
-const text = el.getAttribute("data-text")
+    if (charIdx >= currentLine.length) {
+      if (lineIdx === lines.length - 1) return; // stay on last line
+      isDeleting = true;
+      setTimeout(typeTerminal, 1200);
+      return;
+    }
+    setTimeout(typeTerminal, 35);
+  } else {
+    charIdx--;
+    termEl.innerHTML = currentLine.substring(0, charIdx) + '<span class="cursor"></span>';
 
-let visibleText = text.substring(0,index)
-
-el.innerHTML = visibleText + '<span class="cursor"></span>'
-
-})
-
-if(!deleting){
-
-index++
-
-let maxLength = Math.max(...Array.from(terminals).map(el=>el.getAttribute("data-text").length))
-
-if(index > maxLength){
-
-deleting = true
-setTimeout(animateTerminals,1200)
-return
-
+    if (charIdx <= 0) {
+      isDeleting = false;
+      lineIdx++;
+      setTimeout(typeTerminal, 300);
+      return;
+    }
+    setTimeout(typeTerminal, 20);
+  }
 }
 
-}else{
+typeTerminal();
 
-index--
+/* ── SCROLL REVEAL ── */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12 });
 
-if(index < 0){
-
-deleting = false
-setTimeout(animateTerminals,500)
-return
-
-}
-
-}
-
-setTimeout(animateTerminals,40)
-
-}
-
-animateTerminals()
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 /* ── LIGHTBOX ── */
+const overlay = document.getElementById('lightbox-overlay');
+const lbImg = document.getElementById('lightbox-img');
 
-const overlay   = document.getElementById('lightbox-overlay')
-const lbImg     = document.getElementById('lightbox-img')
-
-function openLightbox(imgEl){
-  lbImg.src = imgEl.src
-  lbImg.alt = imgEl.alt
-  overlay.classList.add('active')
-  document.body.style.overflow = 'hidden'
+function openLightbox(imgEl) {
+  lbImg.src = imgEl.src;
+  lbImg.alt = imgEl.alt;
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
 }
 
-function closeLightbox(){
-  overlay.classList.remove('active')
-  document.body.style.overflow = ''
+function closeLightbox() {
+  overlay.classList.remove('active');
+  document.body.style.overflow = '';
 }
 
-function handleOverlayClick(e){
-  if(e.target === overlay) closeLightbox()
+function handleOverlayClick(e) {
+  if (e.target === overlay) closeLightbox();
 }
 
 document.addEventListener('keydown', e => {
-  if(e.key === 'Escape') closeLightbox()
-})
-
+  if (e.key === 'Escape') closeLightbox();
+});
 </script>
 
 </body>
