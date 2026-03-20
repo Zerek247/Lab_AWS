@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NYC Taxi Intelligence — Project Showcase</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg-deep: #050505;
+  --bg-card: rgba(255,255,255,0.025);
+  --purple: #c77dff;
+  --purple-dim: rgba(199,125,255,0.12);
+  --purple-glow: rgba(124,44,255,0.25);
+  --yellow: #f5c518;
+  --green: #00e5a0;
+  --red: #ff4d6d;
+  --blue: #4f8ef7;
+  --text: #e8e8f0;
+  --muted: #777;
+  --border: rgba(199,125,255,0.15);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+  background: radial-gradient(ellipse at top, #1a0033 0%, #050505 45%, #000 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── AMBIENT PARTICLES ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, rgba(199,125,255,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 30% 60%, rgba(199,125,255,0.2) 0%, transparent 100%),
+    radial-gradient(1px 1px at 55% 15%, rgba(245,197,24,0.25) 0%, transparent 100%),
+    radial-gradient(1px 1px at 70% 80%, rgba(199,125,255,0.2) 0%, transparent 100%),
+    radial-gradient(1px 1px at 85% 40%, rgba(0,229,160,0.2) 0%, transparent 100%),
+    radial-gradient(1px 1px at 95% 10%, rgba(199,125,255,0.15) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── NAVBAR ── */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 0;
+}
+.navbar .container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-brand {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--yellow);
+  text-decoration: none;
+  letter-spacing: 2px;
+}
+.nav-back {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.3s;
+}
+.nav-back:hover { color: var(--purple); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 65vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 24px 60px;
+  position: relative;
+  z-index: 1;
+}
+.hero-inner { max-width: 800px; }
+.hero h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 900;
+  background: linear-gradient(135deg, #ffffff 0%, #c77dff 50%, #f5c518 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+.hero-sub {
+  font-size: 1.05rem;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+
+/* ── STATS ROW ── */
+.stats-row {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+.stat-pill {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 40px;
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.stat-pill .num {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--yellow);
+}
+.stat-pill .label {
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ── TECH BADGES ── */
+.tech-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.tech-badge {
+  background: rgba(199,125,255,0.06);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 0.75rem;
+  color: var(--purple);
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+}
+.tech-badge:hover {
+  background: rgba(199,125,255,0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px var(--purple-glow);
+}
+
+/* ── SECTIONS CONTAINER ── */
+.sections-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── SECTION ── */
+.showcase-section {
+  margin-bottom: 80px;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 0.7s ease forwards;
+}
+.showcase-section:nth-child(1) { animation-delay: 0.1s; }
+.showcase-section:nth-child(2) { animation-delay: 0.2s; }
+.showcase-section:nth-child(3) { animation-delay: 0.3s; }
+.showcase-section:nth-child(4) { animation-delay: 0.4s; }
+.showcase-section:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── SECTION HEADER ── */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.section-number {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: 2.5rem;
+  color: rgba(199,125,255,0.15);
+  line-height: 1;
+  min-width: 60px;
+}
+.section-header h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 1px;
+}
+.section-header .accent-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border), transparent);
+}
+
+/* ── CARD ── */
+.showcase-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+.showcase-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px var(--purple-glow);
+}
+
+/* Alternate layout: even sections have image on right */
+.showcase-section:nth-child(even) .showcase-card {
+  direction: rtl;
+}
+.showcase-section:nth-child(even) .showcase-card > * {
+  direction: ltr;
+}
+
+/* ── IMAGE SIDE ── */
+.card-image {
+  position: relative;
+  min-height: 320px;
+  overflow: hidden;
+  background: #0a0a0f;
+}
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+  transition: transform 0.5s, filter 0.5s;
+  filter: brightness(0.9);
+}
+.showcase-card:hover .card-image img {
+  transform: scale(1.03);
+  filter: brightness(1);
+}
+.card-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(124,44,255,0.1), transparent 60%);
+  pointer-events: none;
+}
+
+/* ── TEXT SIDE ── */
+.card-content {
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.card-content .page-icon {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+.card-content h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--yellow);
+  margin-bottom: 14px;
+  letter-spacing: 1px;
+}
+.card-content p {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+.card-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.card-tag {
+  font-size: 0.7rem;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.5px;
+}
+.tag-yellow { background: rgba(245,197,24,0.1); color: var(--yellow); border: 1px solid rgba(245,197,24,0.25); }
+.tag-green  { background: rgba(0,229,160,0.1);  color: var(--green);  border: 1px solid rgba(0,229,160,0.25); }
+.tag-blue   { background: rgba(79,142,247,0.1); color: var(--blue);   border: 1px solid rgba(79,142,247,0.25); }
+.tag-red    { background: rgba(255,77,109,0.1); color: var(--red);    border: 1px solid rgba(255,77,109,0.25); }
+.tag-purple { background: rgba(199,125,255,0.1);color: var(--purple); border: 1px solid rgba(199,125,255,0.25); }
+
+/* ── FOOTER ── */
+.footer {
+  text-align: center;
+  padding: 40px 24px;
+  color: #444;
+  font-size: 0.78rem;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 2px;
+  border-top: 1px solid rgba(199,125,255,0.08);
+  position: relative;
+  z-index: 1;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .showcase-card {
+    grid-template-columns: 1fr;
+  }
+  .showcase-section:nth-child(even) .showcase-card {
+    direction: ltr;
+  }
+  .card-image { min-height: 220px; }
+  .card-content { padding: 24px 20px; }
+  .stats-row { gap: 12px; }
+  .stat-pill { padding: 8px 16px; }
+}
+
+/* ── LIGHTBOX ── */
+#lightbox-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0,0,0,0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  align-items: center;
+  justify-content: center;
+  animation: lbFade 0.25s ease;
+}
+#lightbox-overlay.active { display: flex; }
+@keyframes lbFade { from { opacity: 0; } to { opacity: 1; } }
+
+#lightbox-img {
+  max-width: 92vw;
+  max-height: 88vh;
+  border-radius: 12px;
+  box-shadow: 0 0 80px var(--purple-glow), 0 0 0 1px var(--border);
+  animation: lbZoom 0.3s cubic-bezier(.22,.68,0,1.15);
+  object-fit: contain;
+}
+@keyframes lbZoom { from { transform: scale(0.88); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+#lightbox-close {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  background: rgba(199,125,255,0.12);
+  border: 1px solid rgba(199,125,255,0.35);
+  color: var(--purple);
+  font-size: 1.3rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.25s;
+  z-index: 10000;
+}
+#lightbox-close:hover {
+  background: rgba(199,125,255,0.3);
+  transform: scale(1.1) rotate(90deg);
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="container">
+    <a class="nav-brand" href="#">🚕 NYC TAXI INTELLIGENCE</a>
+    <a class="nav-back" href="index.html">← Back to Portfolio</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <h1>NYC Taxi Intelligence</h1>
+    <p class="hero-sub">
+      End-to-end AWS data pipeline — ingesting, transforming and visualizing
+      173+ million NYC taxi trips with on-demand historical queries back to 2009.
+    </p>
+
+    <div class="stats-row">
+      <div class="stat-pill">
+        <span class="num">173M+</span>
+        <span class="label">Records</span>
+      </div>
+      <div class="stat-pill">
+        <span class="num">5</span>
+        <span class="label">Years Pre-loaded</span>
+      </div>
+      <div class="stat-pill">
+        <span class="num">16+</span>
+        <span class="label">Years On-demand</span>
+      </div>
+      <div class="stat-pill">
+        <span class="num">2</span>
+        <span class="label">Taxi Types</span>
+      </div>
+    </div>
+
+    <div class="tech-row">
+      <span class="tech-badge">AWS Lambda</span>
+      <span class="tech-badge">AWS S3</span>
+      <span class="tech-badge">AWS EC2</span>
+      <span class="tech-badge">Apache Spark</span>
+      <span class="tech-badge">Docker</span>
+      <span class="tech-badge">Streamlit</span>
+      <span class="tech-badge">Python</span>
+    </div>
+  </div>
+</section>
+
+<!-- SHOWCASE SECTIONS -->
+<div class="sections-wrap">
+
+  <!-- 1. HOME -->
+  <div class="showcase-section">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <h2>Home</h2>
+      <div class="accent-line"></div>
+    </div>
+    <div class="showcase-card">
+      <div class="card-image">
+        <!-- Replace src with your screenshot -->
+        <img src="images/project_home.png" alt="Home page" onclick="openLightbox(this)">
+      </div>
+      <div class="card-content">
+        <div class="page-icon">🏠</div>
+        <h3>Landing Page</h3>
+        <p>
+          The main entry point of the dashboard. Displays key project metrics —
+          173M+ processed records, 5 years of pre-loaded data, and the complete
+          tech stack powering the pipeline. Designed with a dark theme and
+          Space Mono typography for a data-engineering aesthetic.
+        </p>
+        <div class="card-tags">
+          <span class="card-tag tag-yellow">173M+ Records</span>
+          <span class="card-tag tag-green">Live S3</span>
+          <span class="card-tag tag-purple">Dark Theme</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. MONTHLY DASHBOARD -->
+  <div class="showcase-section">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <h2>Monthly Dashboard</h2>
+      <div class="accent-line"></div>
+    </div>
+    <div class="showcase-card">
+      <div class="card-image">
+        <img src="images/project_monthly.png" alt="Monthly Dashboard" onclick="openLightbox(this)">
+      </div>
+      <div class="card-content">
+        <div class="page-icon">📅</div>
+        <h3>Monthly Analytics</h3>
+        <p>
+          Deep dive into any month from 2021–2025. Features KPI cards for
+          total trips, average duration, distance, revenue, and passenger count.
+          Includes hourly distribution charts, Yellow vs Green breakdown,
+          payment methods, and a distance-revenue scatter plot.
+        </p>
+        <div class="card-tags">
+          <span class="card-tag tag-yellow">KPI Cards</span>
+          <span class="card-tag tag-blue">Plotly Charts</span>
+          <span class="card-tag tag-green">Cached Data</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. ZONE MAP -->
+  <div class="showcase-section">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <h2>Zone Map</h2>
+      <div class="accent-line"></div>
+    </div>
+    <div class="showcase-card">
+      <div class="card-image">
+        <img src="images/project_zonemap.png" alt="Zone Map" onclick="openLightbox(this)">
+      </div>
+      <div class="card-content">
+        <div class="page-icon">🗺️</div>
+        <h3>Interactive NYC Map</h3>
+        <p>
+          Scatter map visualization of NYC taxi zones using Mapbox dark tiles.
+          Four selectable metrics: Total Pickups, Total Dropoffs, Average Revenue,
+          and Average Distance. Each zone is sized and colored by activity level,
+          with a ranked bar chart of top zones alongside.
+        </p>
+        <div class="card-tags">
+          <span class="card-tag tag-red">Mapbox</span>
+          <span class="card-tag tag-yellow">4 Metrics</span>
+          <span class="card-tag tag-blue">140+ Zones</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. ANNUAL COMPARISON -->
+  <div class="showcase-section">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <h2>Annual Comparison</h2>
+      <div class="accent-line"></div>
+    </div>
+    <div class="showcase-card">
+      <div class="card-image">
+        <img src="images/project_annual.png" alt="Annual Comparison" onclick="openLightbox(this)">
+      </div>
+      <div class="card-content">
+        <div class="page-icon">📊</div>
+        <h3>Year-over-Year Trends</h3>
+        <p>
+          Comparative analysis across 2021–2025. Shows monthly trip volume trends,
+          average revenue and distance evolution, and total trips per year.
+          Highlights post-pandemic recovery patterns and seasonal trends
+          across five years of NYC taxi data.
+        </p>
+        <div class="card-tags">
+          <span class="card-tag tag-green">5 Years</span>
+          <span class="card-tag tag-purple">Trend Lines</span>
+          <span class="card-tag tag-yellow">60 Months</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. HISTORICAL QUERY -->
+  <div class="showcase-section">
+    <div class="section-header">
+      <span class="section-number">05</span>
+      <h2>Historical Query</h2>
+      <div class="accent-line"></div>
+    </div>
+    <div class="showcase-card">
+      <div class="card-image">
+        <img src="images/project_historical.png" alt="Historical Query" onclick="openLightbox(this)">
+      </div>
+      <div class="card-content">
+        <div class="page-icon">🔍</div>
+        <h3>On-Demand Extraction</h3>
+        <p>
+          Query any month from 2009–2020 in real time. Two processing modes:
+          Quick View with pandas (~40s, 200K row sample) or Full Pipeline
+          with Apache Spark (~4-9 min, complete ETL to S3). Features automatic
+          schema detection for 16+ years of evolving NYC TLC data formats.
+        </p>
+        <div class="card-tags">
+          <span class="card-tag tag-red">Spark ETL</span>
+          <span class="card-tag tag-blue">Pandas</span>
+          <span class="card-tag tag-yellow">2009–2020</span>
+          <span class="card-tag tag-green">Auto Schema</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  NYC TAXI INTELLIGENCE — Arturo Ramirez Tejeda — 2026
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox-overlay" onclick="handleOverlayClick(event)">
+  <button id="lightbox-close" onclick="closeLightbox()" aria-label="Close">✕</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+const overlay = document.getElementById('lightbox-overlay');
+const lbImg   = document.getElementById('lightbox-img');
+
+function openLightbox(imgEl) {
+  lbImg.src = imgEl.src;
+  lbImg.alt = imgEl.alt;
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  overlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function handleOverlayClick(e) {
+  if (e.target === overlay) closeLightbox();
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeLightbox();
+});
+
+/* Scroll-triggered reveal */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.animationPlayState = 'running';
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.showcase-section').forEach(s => {
+  s.style.animationPlayState = 'paused';
+  observer.observe(s);
+});
+</script>
+
+</body>
+</html>
